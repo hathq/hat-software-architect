@@ -1,0 +1,35 @@
+{
+  "schema": "hathq://hat-software-architect/authoring-kit/v1",
+  "version": "1.0.0-source-candidate",
+  "development_request_schema": "hathq://hat-software-architect/hat-development-request/v1",
+  "runtime_discovery": false,
+  "browser_package_upload": false,
+  "implicit_submission": false,
+  "assets": [
+    {
+      "role": "create-prompt",
+      "path": "prompts/create-hat-v1.md",
+      "sha256": "60c8f0789ac5f96f35ef37eb98a78df4f3c9d8bc97bdaa1ee93327b530a67cac"
+    },
+    {
+      "role": "improve-prompt",
+      "path": "prompts/improve-hat-v1.md",
+      "sha256": "071cac6eeffc0d7bb9afd944c18e4eb1841c33c72bc4ebdd89234b972990958b"
+    },
+    {
+      "role": "repository-instructions",
+      "path": "templates/AGENTS.md",
+      "sha256": "7f56b0f678ff18fc511b21b3b8d5fec1967b1b76c8582b38b92b20b4810073e4"
+    },
+    {
+      "role": "repository-checklist",
+      "path": "repository-checklist-v1.md",
+      "sha256": "7ee990c8a6c0fbf556872fd67ebdf804052d3901fb786d579cb48429784003c2"
+    },
+    {
+      "role": "development-request-schema",
+      "path": "../schemas/hat-development-request-v1.schema.json",
+      "sha256": "a303e5217796b09305b0f45e651306995efdd1534923305dba64d34568e0ed62"
+    }
+  ]
+}

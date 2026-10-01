@@ -1,0 +1,183 @@
+{
+  "schema": "hathq://hat/package/v2",
+  "package_id": "hat/software-architect",
+  "repository_id": "hat-software-architect",
+  "version": "0.10.0",
+  "specification_version": "1.0.0",
+  "manifest": {
+    "schema": "hathq://hat/manifest/v1",
+    "id": "hat/software-architect",
+    "name": "Software Architect",
+    "version": "0.10.0",
+    "capabilities": [
+      "architecture-boundary-review",
+      "dependency-risk-review"
+    ],
+    "decision_boundaries": [
+      "recommend-architecture-change"
+    ],
+    "input_classifications": [
+      "public",
+      "internal",
+      "internal-confidential"
+    ],
+    "output_classification": "internal",
+    "permissions": [
+      {
+        "resource": "architecture-record",
+        "operations": [
+          "inspect-metadata",
+          "propose-boundary"
+        ],
+        "mode": "propose"
+      }
+    ]
+  },
+  "service_requirements": [
+    {
+      "id": "github-work-item-publication",
+      "operation_ids": [
+        "hathq://vocabulary/action/create-github-issue/v1",
+        "hathq://vocabulary/action/create-github-pull-request/v1"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "id": "hathq://vocabulary/action/review-architecture-boundary/v1",
+      "input_schema": "hathq://hat-software-architect/review-architecture-boundary-input/v1",
+      "output_schema": "hathq://hat-software-architect/review-architecture-boundary-output/v1",
+      "context_plan": {
+        "id": "review-architecture-boundary-context",
+        "selectors": [
+          {
+            "namespace": "architecture-record",
+            "projection_schema": "hathq://hat-software-architect/architecture-record/v1",
+            "required": true
+          }
+        ],
+        "unresolved_policy": "record-unresolved"
+      },
+      "reducer": {
+        "id": "review-architecture-boundary-reducer",
+        "strategy": "typed-domain-event",
+        "event_schema": "hathq://hat-software-architect/review-architecture-boundary-event/v1",
+        "projection_schema": "hathq://hat-software-architect/review-architecture-boundary-projection/v1",
+        "conflict_policy": "reject"
+      },
+      "procedure": {
+        "id": "review-architecture-boundary-procedure",
+        "steps": [
+          {
+            "action_id": "hathq://vocabulary/action/review-architecture-boundary/v1",
+            "input_schema": "hathq://hat-software-architect/review-architecture-boundary-input/v1",
+            "output_schema": "hathq://hat-software-architect/review-architecture-boundary-output/v1"
+          }
+        ]
+      },
+      "handler": {
+        "kind": "declarative-hat",
+        "reference": "review-architecture-boundary-procedure"
+      }
+    }
+  ],
+  "catalog": {
+    "schema": "hathq://hat/semantic-catalog/v1",
+    "identity": {
+      "catalog_id": "hat-software-architect",
+      "version": 1,
+      "digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416"
+    },
+    "owner_repository_id": "hat-software-architect",
+    "foundation": false,
+    "dependencies": [
+      {
+        "catalog_id": "hathq.foundation",
+        "version": 1,
+        "digest_sha256": "6b618dff030e551bafd6b1a70fe6daf71e2873de9c2230f4cf71e9ac9fbf2c0f"
+      }
+    ],
+    "incompatibilities": [],
+    "terms": [
+      {
+        "reference": {
+          "catalog_id": "hat-software-architect",
+          "catalog_digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416",
+          "term_id": "hathq://vocabulary/entity/architecture-record/v1",
+          "version": 1,
+          "definition_digest_sha256": "640775c8dcc6f94925bcc94543a8ad92061e536a56fa62f35006a413a985955d",
+          "kind": "entity-type"
+        },
+        "wire_schema": "hathq://hat-software-architect/architecture-record/v1",
+        "semantic_icon": "generic",
+        "dependencies": [],
+        "is_a": [],
+        "domain": [],
+        "range": []
+      },
+      {
+        "reference": {
+          "catalog_id": "hat-software-architect",
+          "catalog_digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416",
+          "term_id": "hathq://vocabulary/state/architecture-boundary/v1",
+          "version": 1,
+          "definition_digest_sha256": "313f59830c3b95cfa447a4d2b1507d03c2dbb34ccc86cb6d86018671cf93181c",
+          "kind": "state-type"
+        },
+        "wire_schema": "hathq://hat-software-architect/architecture-boundary/v1",
+        "semantic_icon": "generic",
+        "dependencies": [],
+        "is_a": [],
+        "domain": [],
+        "range": []
+      },
+      {
+        "reference": {
+          "catalog_id": "hat-software-architect",
+          "catalog_digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416",
+          "term_id": "hathq://vocabulary/action/review-architecture-boundary/v1",
+          "version": 1,
+          "definition_digest_sha256": "fc40f7aba263a79f72bb0c853beac95f5c349320f399448c1bb71ffcd72454df",
+          "kind": "action"
+        },
+        "wire_schema": "hathq://hat-software-architect/review-architecture-boundary-input/v1",
+        "semantic_icon": "generic",
+        "dependencies": [],
+        "is_a": [],
+        "domain": [],
+        "range": []
+      }
+    ],
+    "lexicalizations": [],
+    "frames": [
+      {
+        "frame_id": "review-architecture-boundary-procedure-frame",
+        "definition_digest_sha256": "8a57e451b8af09fef9958ca88862e436ab982d1a22ce7f858f59baf8cfbf7ba9",
+        "predicate": {
+          "catalog_id": "hat-software-architect",
+          "catalog_digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416",
+          "term_id": "hathq://vocabulary/action/review-architecture-boundary/v1",
+          "version": 1,
+          "definition_digest_sha256": "fc40f7aba263a79f72bb0c853beac95f5c349320f399448c1bb71ffcd72454df",
+          "kind": "action"
+        },
+        "roles": [
+          {
+            "role": "actor",
+            "required": true,
+            "accepted_kinds": [
+              "entity-type"
+            ]
+          },
+          {
+            "role": "object",
+            "required": true,
+            "accepted_kinds": [
+              "concept"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

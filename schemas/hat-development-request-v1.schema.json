@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hathq://hat-software-architect/hat-development-request/v1",
+  "title": "HAT development request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "request_id",
+    "scope_ref",
+    "kind",
+    "purpose",
+    "desired_behavior",
+    "constraints",
+    "unresolved",
+    "evidence_references",
+    "target"
+  ],
+  "properties": {
+    "schema": {
+      "const": "hathq://hat-software-architect/hat-development-request/v1"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{0,95}$"
+    },
+    "scope_ref": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{0,95}$"
+    },
+    "kind": {
+      "enum": ["create", "improve"]
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "desired_behavior": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8192
+    },
+    "constraints": {
+      "type": "array",
+      "maxItems": 64,
+      "items": { "type": "string", "minLength": 1, "maxLength": 1024 }
+    },
+    "unresolved": {
+      "type": "array",
+      "maxItems": 64,
+      "items": { "type": "string", "minLength": 1, "maxLength": 1024 }
+    },
+    "evidence_references": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["provider_id", "opaque_reference", "sha256"],
+        "properties": {
+          "provider_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+          "opaque_reference": { "type": "string", "minLength": 1, "maxLength": 512 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "target": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository_id", "package_id", "version", "content_sha256"],
+          "properties": {
+            "repository_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+            "package_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+            "version": { "type": "string", "minLength": 1, "maxLength": 64 },
+            "content_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "create" } } },
+      "then": { "properties": { "target": { "type": "null" } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "improve" } } },
+      "then": { "properties": { "target": { "type": "object" } } }
+    }
+  ]
+}
