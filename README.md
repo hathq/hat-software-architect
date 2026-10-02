@@ -1,17 +1,28 @@
-# Software Architect HAT
+# hat-software-architect
 
-Independent HATHQ HAT repository. It owns the vocabulary, context plan, exact-term reducer and procedure for `review-architecture-boundary`. It contains no credentials and grants no authority. Consumers load the immutable package and invoke its declared worker interface.
+Provide the declared role interface for reviewing software responsibilities and architecture boundaries.
 
-The reducer accepts only canonical vocabulary IDs, rejects revision conflicts and returns `vocabulary-term-unknown` for every unrecognized value. Unknown input is never guessed or completed.
+## What you can do
 
-The signed package declares that GitHub issue and pull-request operations are supplied by
-`hat-github-operator`. This is topology metadata only; it grants no GitHub authority and does
-not claim that a worker or binding is available.
+- Validate the released review-architecture-boundary procedure inputs.
+- Apply exact vocabulary and revision checks without completing unknown values.
 
-`authoring/authoring-kit-v1.json` is a source-candidate, digest-pinned Codex
-authoring kit for creating a separate HAT repository or improving one exact HAT
-package. It includes closed request schema, prompt templates, repository
-instructions and a release checklist. It is not runtime-discovered, does not
-upload packages and cannot submit a request implicitly. The authoring action is
-not advertised in `hat.package.json` until the shared request contract and an
-authenticated worker are released.
+## Current scope
+
+The current package supplies declarations and deterministic reducer behavior. End-to-end domain judgment requires separate acceptance evidence; the package contains no credential or execution grant.
+
+Package distribution is not activated by this documentation. Use the checked-in source and the declared dependency versions; published availability must be verified separately.
+
+## Getting started
+
+Install Rust 1.97 or newer and make the declared dependencies available. Use the configured private registry when a dependency is not distributed publicly. Run from this repository:
+
+```sh
+cargo test --locked
+```
+
+## Documentation and source
+
+[Usage guide](docs/getting-started.md)
+
+[Schemas](schemas) · [Implementation and public interfaces](src) · [Verification cases](tests) · [Contributing](CONTRIBUTING.md) · [Security reporting](SECURITY.md) · [License](LICENSE) · [Attribution notices](NOTICE)
