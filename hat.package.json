@@ -86,7 +86,7 @@
     "identity": {
       "catalog_id": "hat-software-architect",
       "version": 1,
-      "digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416"
+      "digest_sha256": "22be0bf365d40f48e7ff45eadf6488ed93838d72a0ae9598e895526fbf452074"
     },
     "owner_repository_id": "hat-software-architect",
     "foundation": false,
@@ -94,7 +94,7 @@
       {
         "catalog_id": "hathq.foundation",
         "version": 1,
-        "digest_sha256": "6b618dff030e551bafd6b1a70fe6daf71e2873de9c2230f4cf71e9ac9fbf2c0f"
+        "digest_sha256": "7ed387a86fe00a320784c181a2128da856ccb3e5e3930040ca39d9f5b627a465"
       }
     ],
     "incompatibilities": [],
@@ -102,7 +102,7 @@
       {
         "reference": {
           "catalog_id": "hat-software-architect",
-          "catalog_digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416",
+          "catalog_digest_sha256": "22be0bf365d40f48e7ff45eadf6488ed93838d72a0ae9598e895526fbf452074",
           "term_id": "hathq://vocabulary/entity/architecture-record/v1",
           "version": 1,
           "definition_digest_sha256": "640775c8dcc6f94925bcc94543a8ad92061e536a56fa62f35006a413a985955d",
@@ -118,7 +118,7 @@
       {
         "reference": {
           "catalog_id": "hat-software-architect",
-          "catalog_digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416",
+          "catalog_digest_sha256": "22be0bf365d40f48e7ff45eadf6488ed93838d72a0ae9598e895526fbf452074",
           "term_id": "hathq://vocabulary/state/architecture-boundary/v1",
           "version": 1,
           "definition_digest_sha256": "313f59830c3b95cfa447a4d2b1507d03c2dbb34ccc86cb6d86018671cf93181c",
@@ -134,7 +134,7 @@
       {
         "reference": {
           "catalog_id": "hat-software-architect",
-          "catalog_digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416",
+          "catalog_digest_sha256": "22be0bf365d40f48e7ff45eadf6488ed93838d72a0ae9598e895526fbf452074",
           "term_id": "hathq://vocabulary/action/review-architecture-boundary/v1",
           "version": 1,
           "definition_digest_sha256": "fc40f7aba263a79f72bb0c853beac95f5c349320f399448c1bb71ffcd72454df",
@@ -148,36 +148,6 @@
         "range": []
       }
     ],
-    "lexicalizations": [],
-    "frames": [
-      {
-        "frame_id": "review-architecture-boundary-procedure-frame",
-        "definition_digest_sha256": "8a57e451b8af09fef9958ca88862e436ab982d1a22ce7f858f59baf8cfbf7ba9",
-        "predicate": {
-          "catalog_id": "hat-software-architect",
-          "catalog_digest_sha256": "119bcb7d07621baabc5fd6abc0e8f18a194892078ae7f287ffa30faf5067b416",
-          "term_id": "hathq://vocabulary/action/review-architecture-boundary/v1",
-          "version": 1,
-          "definition_digest_sha256": "fc40f7aba263a79f72bb0c853beac95f5c349320f399448c1bb71ffcd72454df",
-          "kind": "action"
-        },
-        "roles": [
-          {
-            "role": "actor",
-            "required": true,
-            "accepted_kinds": [
-              "entity-type"
-            ]
-          },
-          {
-            "role": "object",
-            "required": true,
-            "accepted_kinds": [
-              "concept"
-            ]
-          }
-        ]
-      }
-    ]
+    "lexicalizations": []
   }
 }
