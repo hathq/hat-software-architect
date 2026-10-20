@@ -2,5 +2,10 @@
   "repository": "hathq/hat-software-architect",
   "github_id": 1400279596,
   "package_id": "hat/software-architect",
-  "binary": "hat-software-architect-worker"
+  "binary": "hat-software-architect-worker",
+  "required_workflows": [
+    ".github/workflows/oss-policy.yml",
+    ".github/workflows/public-dependencies.yml",
+    ".github/workflows/release-hat.yml"
+  ]
 }

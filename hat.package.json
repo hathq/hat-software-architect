@@ -2,13 +2,13 @@
   "schema": "hathq://hat/package/v2",
   "package_id": "hat/software-architect",
   "repository_id": "hat-software-architect",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "specification_version": "1.0.0",
   "manifest": {
     "schema": "hathq://hat/manifest/v1",
     "id": "hat/software-architect",
     "name": "Software Architect",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "capabilities": [
       "architecture-boundary-review",
       "dependency-risk-review"
