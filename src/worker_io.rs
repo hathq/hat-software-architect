@@ -83,13 +83,19 @@ pub(super) fn write_document(path: &Path, bytes: &[u8]) -> Result<(), String> {
         return Err("worker document exceeds 1 MiB".into());
     }
     if path.exists() {
-        return if fs::read(path).map_err(message)? == bytes {
+        return if hat_software_architect::document::read(path)? == bytes {
             Ok(())
         } else {
             Err("worker document already differs".into())
         };
     }
-    let mut file = OpenOptions::new()
+    let mut options = OpenOptions::new();
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::OpenOptionsExt;
+        options.mode(0o600);
+    }
+    let mut file = options
         .write(true)
         .create_new(true)
         .open(path)

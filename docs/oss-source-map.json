@@ -17,7 +17,10 @@
             "path": "src/main.rs"
           }
         ],
-        "public_modules": [],
+        "public_modules": [
+          "document",
+          "review"
+        ],
         "public_reexports": [],
         "implicit_bins": []
       },
@@ -29,13 +32,21 @@
     "schemas/hat-development-request-v1.schema.json",
     "schemas/review-architecture-boundary-event-v1.schema.json",
     "schemas/review-architecture-boundary-input-v1.schema.json",
+    "schemas/review-architecture-boundary-input-v2.schema.json",
     "schemas/review-architecture-boundary-output-v1.schema.json",
+    "schemas/review-architecture-boundary-output-v2.schema.json",
     "schemas/review-architecture-boundary-projection-v1.schema.json"
   ],
   "test_sources": [
-    "src/main.rs",
     "tests/authoring-kit.test.mjs",
-    "tests/contracts.rs"
+    "tests/catalog_frame_retirement.rs",
+    "tests/contracts.rs",
+    "tests/documents.rs",
+    "tests/fixtures/review-v2.json",
+    "tests/fixtures/selected-binding.json",
+    "tests/review.rs",
+    "tests/review_cli.rs",
+    "tests/support/mod.rs"
   ],
   "example_sources": [],
   "workflow_definitions": [

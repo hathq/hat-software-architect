@@ -2,6 +2,9 @@
 
 use std::collections::BTreeSet;
 
+pub mod document;
+pub mod review;
+
 pub const PACKAGE_JSON: &str = include_str!("../hat.package.json");
 pub const PACKAGE_ID: &str = "hat/software-architect";
 pub const REPOSITORY_ID: &str = "hat-software-architect";

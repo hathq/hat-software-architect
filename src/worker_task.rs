@@ -4,7 +4,6 @@ use hat_specifications::{
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet};
-use std::fs;
 use std::path::Path;
 
 use crate::worker::Lease;
@@ -125,9 +124,5 @@ fn read_digest_document(root: &Path, reference: &ActionReference) -> Result<Vec<
     if reference.schema_id != INPUT_SCHEMA || reference.reference != reference.digest_sha256 {
         return Err("input reference is not content-addressed".into());
     }
-    let bytes = fs::read(root.join(format!("{}.json", reference.reference))).map_err(message)?;
-    if bytes.len() > 1_048_576 || hex::encode(Sha256::digest(&bytes)) != reference.digest_sha256 {
-        return Err("input digest differs".into());
-    }
-    Ok(bytes)
+    hat_software_architect::document::read_digest(root, &reference.digest_sha256)
 }
