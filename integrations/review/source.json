@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_url": "https://github.com/coela-oss/engineering/releases/tag/semantic/v0.1.0",
+  "license": "CC-BY-4.0",
+  "attribution": "Coela",
+  "guidance": {
+    "catalogId": "coela-engineering-content",
+    "version": "0.2.4",
+    "catalogSha256": "99d4f79a6dd291a35e060b225ec34b1793863ac67927d035796e80bde7b1527f",
+    "contentId": "engineering-principles-en",
+    "contentSha256": "152199edd03f171ec85011c4ec22376b88dec762cf8b3c2db175718670531e43"
+  },
+  "module_sha256": "6736c2fc5fc6819f2baa9b403362b1b6873600f0abb96ae37ae2b10f723116da",
+  "term_id": "737c04107b2d09fe17a865a3c9b4718f",
+  "native_term": "coela/engineering/evidence::ImplementationEvidence",
+  "sem_lang_revision": "a7b382aa6bb1ecb26fa160a71bdf784b5772a4cb",
+  "criterion": "same-stage-subject-scope-revision-evidence",
+  "runtime_adoption": false,
+  "authority_granted": false
+}

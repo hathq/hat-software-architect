@@ -1,0 +1,116 @@
+{
+  "schema": "hathq://hat-software-architect/review-architecture-boundary-input/v2",
+  "scope_ref": "scope:synthetic",
+  "revision": 4,
+  "semantic": {
+    "module_sha256": "6736c2fc5fc6819f2baa9b403362b1b6873600f0abb96ae37ae2b10f723116da",
+    "term_id": "737c04107b2d09fe17a865a3c9b4718f",
+    "definition_revision": "definitions-7ce301764f487c5a0f7a3390371070bae1ea6ed63a20105debfbc5996df74dc7"
+  },
+  "claims": [
+    {
+      "subject_ref": "subject:supported",
+      "stage": "implementation",
+      "evidence": [
+        {
+          "scope_ref": "scope:synthetic",
+          "reference": "evidence:supported0",
+          "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "subject_ref": "subject:supported",
+          "stage": "implementation",
+          "revision": 4,
+          "outcome": "verified"
+        }
+      ]
+    },
+    {
+      "subject_ref": "subject:missing",
+      "stage": "test",
+      "evidence": []
+    },
+    {
+      "subject_ref": "subject:stale",
+      "stage": "publication",
+      "evidence": [
+        {
+          "scope_ref": "scope:synthetic",
+          "reference": "evidence:stale0",
+          "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "subject_ref": "subject:stale",
+          "stage": "publication",
+          "revision": 3,
+          "outcome": "verified"
+        }
+      ]
+    },
+    {
+      "subject_ref": "subject:failed",
+      "stage": "test",
+      "evidence": [
+        {
+          "scope_ref": "scope:synthetic",
+          "reference": "evidence:failed0",
+          "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "subject_ref": "subject:failed",
+          "stage": "test",
+          "revision": 4,
+          "outcome": "failed"
+        }
+      ]
+    },
+    {
+      "subject_ref": "subject:conflict",
+      "stage": "deployment",
+      "evidence": [
+        {
+          "scope_ref": "scope:synthetic",
+          "reference": "evidence:conflict0",
+          "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "subject_ref": "subject:conflict",
+          "stage": "deployment",
+          "revision": 4,
+          "outcome": "verified"
+        },
+        {
+          "scope_ref": "scope:synthetic",
+          "reference": "evidence:conflict1",
+          "digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+          "subject_ref": "subject:conflict",
+          "stage": "deployment",
+          "revision": 4,
+          "outcome": "failed"
+        }
+      ]
+    },
+    {
+      "subject_ref": "subject:unresolved",
+      "stage": "implementation",
+      "evidence": [
+        {
+          "scope_ref": "scope:synthetic",
+          "reference": "evidence:unresolved0",
+          "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "subject_ref": "subject:unresolved",
+          "stage": "implementation",
+          "revision": 4,
+          "outcome": "unknown"
+        }
+      ]
+    },
+    {
+      "subject_ref": "subject:wrong-stage",
+      "stage": "deployment",
+      "evidence": [
+        {
+          "scope_ref": "scope:synthetic",
+          "reference": "evidence:wrong-stage0",
+          "digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "subject_ref": "subject:wrong-stage",
+          "stage": "implementation",
+          "revision": 4,
+          "outcome": "verified"
+        }
+      ]
+    }
+  ]
+}

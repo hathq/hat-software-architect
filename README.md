@@ -40,3 +40,9 @@ foundation dependency digests follow the declared HatSpec source dependency.
 This source change does not replace previously signed release bytes. A new
 immutable release identity and consumer acceptance are required before distributing
 the changed package; language meaning/adoption remains with sem-lang.
+
+## Evidence review proposals
+
+[Evidence review v2](docs/evidence-review-v2.md) adds an explicit bounded offline
+review command and closed source/semantic/evidence contracts. Existing v1 Hatter
+operations remain the active invocation interface; v2 grants no authority.

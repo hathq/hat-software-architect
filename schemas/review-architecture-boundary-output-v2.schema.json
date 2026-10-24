@@ -1,0 +1,90 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "scope_ref",
+    "revision",
+    "semantic",
+    "authority_granted",
+    "findings"
+  ],
+  "properties": {
+    "schema": {
+      "const": "hathq://hat-software-architect/review-architecture-boundary-output/v2"
+    },
+    "scope_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 96,
+      "pattern": "^[A-Za-z0-9:/._-]+$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "semantic": {
+      "$ref": "hathq://hat-software-architect/review-architecture-boundary-input/v2#/$defs/semantic"
+    },
+    "authority_granted": {
+      "const": false
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "subject_ref",
+          "stage",
+          "kind",
+          "evidence_refs"
+        ],
+        "properties": {
+          "subject_ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9:/._-]+$"
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "implementation",
+              "test",
+              "publication",
+              "deployment"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "supported",
+              "missing",
+              "stale",
+              "failed",
+              "conflicting",
+              "unresolved"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "maxItems": 8,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^[A-Za-z0-9:/._-]+$"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hathq://hat-software-architect/review-architecture-boundary-output/v2"
+}

@@ -4,7 +4,6 @@ use hat_specifications::{
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet};
-use std::fs;
 use std::path::Path;
 
 use crate::worker::Lease;
@@ -45,7 +44,18 @@ pub(super) fn process(
     let input_bytes = read_digest_document(&input_store, &invocation.input)?;
     let input: WorkerInput = serde_json::from_slice(&input_bytes).map_err(message)?;
     validate_input(&input, invocation.expected_projection_revision)?;
-    let output = WorkerOutput {
+    let output = project(input)?;
+    let output_bytes = serde_json::to_vec(&output).map_err(message)?;
+    let digest = hex::encode(Sha256::digest(&output_bytes));
+    let output_store = canonical_directory(required(args, "output-store")?)?;
+    write_document(&output_store.join(format!("{digest}.json")), &output_bytes)?;
+    complete(args, common, control, lease, output.revision, &digest)?;
+    println!("{{\"processed\":true,\"outputDigestSha256\":\"{digest}\"}}");
+    Ok(())
+}
+
+fn project(input: WorkerInput) -> Result<WorkerOutput, String> {
+    Ok(WorkerOutput {
         schema: OUTPUT_SCHEMA,
         scope_ref: input.scope_ref,
         revision: input.revision.checked_add(1).ok_or("revision overflow")?,
@@ -55,14 +65,7 @@ pub(super) fn process(
             .collect::<BTreeSet<_>>()
             .into_iter()
             .collect(),
-    };
-    let output_bytes = serde_json::to_vec(&output).map_err(message)?;
-    let digest = hex::encode(Sha256::digest(&output_bytes));
-    let output_store = canonical_directory(required(args, "output-store")?)?;
-    write_document(&output_store.join(format!("{digest}.json")), &output_bytes)?;
-    complete(args, common, control, lease, output.revision, &digest)?;
-    println!("{{\"processed\":true,\"outputDigestSha256\":\"{digest}\"}}");
-    Ok(())
+    })
 }
 
 fn complete(
@@ -125,9 +128,9 @@ fn read_digest_document(root: &Path, reference: &ActionReference) -> Result<Vec<
     if reference.schema_id != INPUT_SCHEMA || reference.reference != reference.digest_sha256 {
         return Err("input reference is not content-addressed".into());
     }
-    let bytes = fs::read(root.join(format!("{}.json", reference.reference))).map_err(message)?;
-    if bytes.len() > 1_048_576 || hex::encode(Sha256::digest(&bytes)) != reference.digest_sha256 {
-        return Err("input digest differs".into());
-    }
-    Ok(bytes)
+    hat_software_architect::document::read_digest(root, &reference.digest_sha256)
 }
+
+#[cfg(test)]
+#[path = "worker_task_tests.rs"]
+mod tests;
