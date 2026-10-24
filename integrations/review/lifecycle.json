@@ -26,6 +26,14 @@
         {
           "path": "schemas/review-architecture-boundary-output-v2.schema.json",
           "sha256": "14e3cb86e7b4e935b1c356f8da286b0fb6efa0730d6c065802d347eddd0f8412"
+        },
+        {
+          "path": "src/document.rs",
+          "sha256": "ed5828d12b0103c8d122a0e959980826614183bcd44d22b9f0b83aaf710d34bf"
+        },
+        {
+          "path": "integrations/review/source.json",
+          "sha256": "37ef22b822901f06d67f63bd42e7c26879ebadead01c8de8e9592b6eaaf9e6cd"
         }
       ],
       "identity": [
