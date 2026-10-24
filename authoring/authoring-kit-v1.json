@@ -29,7 +29,7 @@
     {
       "role": "development-request-schema",
       "path": "../schemas/hat-development-request-v1.schema.json",
-      "sha256": "a303e5217796b09305b0f45e651306995efdd1534923305dba64d34568e0ed62"
+      "sha256": "2551cb4569035088712369cb933ff2aa74d0359d3bcbcd23a6a3a0023d0c8b31"
     }
   ]
 }

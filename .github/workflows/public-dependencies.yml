@@ -43,6 +43,7 @@ jobs:
           ARCHITECT_BINARY: ${{ github.workspace }}/target/debug/hat-software-architect-worker
           REVIEW_REPORT: ${{ runner.temp }}/review-lifecycle.json
         run: |
+          node --test tests/authoring-kit.test.mjs
           pnpm --dir .engineering-source install --frozen-lockfile --ignore-scripts
           node scripts/verify-review-lifecycle.mts
       - name: Retain review coverage evidence
