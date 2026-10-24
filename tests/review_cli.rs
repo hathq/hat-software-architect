@@ -20,7 +20,7 @@ fn actual_offline_cli_returns_proposals_without_hatter_or_credentials() {
             .unwrap()
     };
     let result = run();
-    assert!(result.status.success(), "{:?}", result);
+    assert!(result.status.success(), "{result:?}");
     let bytes = fs::read(&output).unwrap();
     let value: ReviewOutput = serde_json::from_slice(&bytes).unwrap();
     assert!(!value.authority_granted);
